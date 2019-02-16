@@ -58,8 +58,7 @@ def e_calibrate():
     print('Please take a ruler and make a mark 20mm up the filament, and another 100mm above that.')
     waitForUser()
 
-    print('Important: Extrude the filament 1mm at a time via the printer controller.')
-    print('Extrude 100mm of filament.')
+    print('Important: Extrude the filament 1mm at a time via the printer controller.\nExtrude 100mm of filament.')
     waitForUser()
 
     print('Please measure the distance from the extruder to the mark on the filament.')
@@ -71,9 +70,10 @@ def e_calibrate():
         userInput = int(userInput)
     except:
         print('Sorry, I do not recognize that input. Please try again.')
-
-    offset = 100 - userInput
+   
     eSteps = 80 + userInput
+    offset = 100 - eSteps
+
 
     print('Extruder Input: 100mm\nExtruder Actual: {}mm\nOffset: {}mm'.format(eSteps, offset))
     time.sleep(5)
