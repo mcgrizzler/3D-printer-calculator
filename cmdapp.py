@@ -9,7 +9,6 @@
 
 # - Libraries -
 from __future__ import print_function, unicode_literals
-import regex
 import time
 
 from pprint import pprint
@@ -35,7 +34,7 @@ style = style_from_dict({
 # - Prompts-
 
 # Select an action to run
-actionSelection = [
+actions = [
     {
         'type': 'checkbox',
         'name': 'script',
@@ -67,12 +66,13 @@ actionSelection = [
 def main(): # Main program function
     # Check if to display intro
     if firstRun:
-        intro():
+        intro()
+        firstRun = False
     else:
         print('\n\n')
 
     # Run actionSelection prompt to select function
-    actionSelection = prompt(questions, style=style)
+    actionSelection = prompt(actions, style=style)
 
     # --Debug-- Print
     pprint(actionSelection)
@@ -82,3 +82,46 @@ def intro(): # Program intro display
     print('\n----------\n\nRepRap Calibrator\n\n----------')
     time.sleep(5)
     print('\n\n')
+
+def calibrateAll(): # Run all calibrations
+    print('\n\n\n\n\n\n\n\nCalibrate All...\n\n')
+
+    pidTune(False) # Run PID tuning without Single Run
+
+def pidTune(singleRun): # PID tune extruder and bed
+    print('\n\n\n\n\n\n\n\nPID Tuning Starting...\n\n')
+    
+    # Placeholder :)
+
+    if singleRun:
+        main():
+    else:
+        calibrateExtruder():
+
+def calibrateExtruder(singleRun): # Calibrate Extruder E-Steps
+    print('\n\n\n\n\n\n\n\nExtruder Calibration Starting...\n\n')
+    
+    # Placeholder :)
+
+    if singleRun:
+        main():
+    else:
+        calibrateLinearAdvance():
+
+def calibrateLinearAdvance(): # Calibrate K-Value and enable Linear Advance
+    print('\n\n\n\n\n\n\n\nLinear Advance Calibration Starting...\n\n')
+
+    # Placeholder :)
+
+    main():
+
+def displayEEPROM(): # Show EEPORM Values
+    print('\n\n\n\n\n\n\n\nEEPROM Values Starting...\n\n')
+
+    # Placeholder :)
+
+    main():
+
+# - Main Program Call -
+main()
+    
